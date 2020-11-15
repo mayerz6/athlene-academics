@@ -2,7 +2,7 @@
 <h6 data-aos-delay="400">Getting help is easier than you think.</h6>
 <hr>
 
-       <div>
+       <section id="reqForm">
 
              <span class="contact100-form-title">
               
@@ -24,7 +24,17 @@
             </div>
 
             <div class="wrap-input100 validate-input" data-validate = "Phone is required">
-                <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Your Subject:</span></label>
+                <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Who is this tutelage for?</span></label>
+            <input type="radio" id="male" name="teachwho" value="myself">
+            <label for="male">Myself</label>
+            <input type="radio" id="female" name="teachwho" value="mychild">
+            <label for="female">My child</label>
+            <input type="radio" id="other" name="teachwho" value="some1else">
+            <label for="other">Someone else</label>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate = "Phone is required">
+                <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Subject:</span></label>
                     <select name="topics">
                         <option value="0">-- Subject Options --</option>
                         <option value="1">Mathematics</option>
@@ -36,7 +46,7 @@
             </div>
 
             <div class="wrap-input100 validate-input" data-validate = "Phone is required">
-                <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Your Current Level Of Knowledge:</span></label>
+                <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Current Level Of Knowledge:</span></label>
                  <select name="cars" id="cars">
                   <option value="0">-- Skill Level --</option>
                   <option value="1">Primary</option>
@@ -46,7 +56,7 @@
             </div>
 
             <div class="wrap-input100 validate-input" data-validate = "Phone is required">
-                <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Your Preferred Time For Sessions:</span></label>
+                <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Preferred Time For Sessions:</span></label>
                  <select name="cars" id="cars">
                   <option value="volvo">-- Session Days --</option>
                   <option value="volvo">Weekdays</option>
@@ -75,7 +85,7 @@
                 </div>
             </div>
      
-        </div>
+        </section>
 <div data-aos-delay="800">
   <a href="#about" class="btn-get-started scrollto">Get Started</a>
 </div>
