@@ -15,6 +15,7 @@
                 
                 <label class="label-input100" for="email"><span class="lnr lnr-envelope">Email:</span></label>
                 <input class="input100" id="emailInput" type="text" name="email" placeholder="Email">
+                <span id="emailErrorMsg"></span>
             </div>
             <div class="wrap-input100 validate-input" data-validate = "Phone is required">
                 <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Contact:</span></label>
@@ -71,7 +72,8 @@
 <br>
             <div class="wrap-input100 validate-input" data-validate = "Message is required">
                 <label class="label-checkbox100" for="ckb1"><span class="">How can we help?</span></label>
-               <br> <textarea rows="8" cols="60" class="input100" name="message" placeholder="Example...I'd like help preparing for my CXC Maths exam."></textarea>
+               <br><textarea rows="8" cols="60" class="input100" name="feedbackMsg" id="feedbackMsg" placeholder="Example...I'd like help preparing for my CXC Maths exam."></textarea>
+               <span id="feedbackErrorMsg"></span>
             </div>
 
             <div class="contact100-form-checkbox">
