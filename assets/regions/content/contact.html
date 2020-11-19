@@ -10,20 +10,22 @@
 
             <div class="wrap-input100 validate-input" data-validate="Name is required">
                 <label class="label-input100" for="name"><span class="lnr lnr-user">Name:</span></label>
-                <input class="input100" id="name" type="text" name="name" placeholder="Name">
+                <input class="input100" id="nameInput" type="text" name="name" placeholder="Name">
+                <span id="nameErrorMsg"></span>
+                
                 <label class="label-input100" for="email"><span class="lnr lnr-envelope">Email:</span></label>
-                <input class="input100" id="email" type="text" name="email" placeholder="Email">
-         
+                <input class="input100" id="emailInput" type="text" name="email" placeholder="Email">
             </div>
             <div class="wrap-input100 validate-input" data-validate = "Phone is required">
                 <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Contact:</span></label>
-                <input class="input100" id="phone" type="text" name="phone" placeholder="Phone">
+                <input class="input100" id="phoneInput" type="text" name="phone" placeholder="Phone">
+                <span id="phoneErrorMsg"></span>
             </div>
 
           
             <div class="wrap-input100 validate-input" data-validate = "Phone is required">
                 <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Subject:</span></label>
-                    <select name="topics">
+                    <select name="usrTopic" id="usrTopic">
                         <option value="0">-- Subject Options --</option>
                         <option value="1">Mathematics</option>
                         <option value="2">Physics</option>
@@ -31,36 +33,39 @@
                         <option value="4">English Language</option>
                         <option value="5">History</option>
                     </select>
+                    <span id="topicErrorMsg"></span>
             </div>
 
             <div class="wrap-input100 validate-input" data-validate = "Phone is required">
                 <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Current Level Of Knowledge:</span></label>
-                 <select name="cars" id="cars">
+                 <select name="usrLevel" id="usrLevel">
                   <option value="0">-- Skill Level --</option>
                   <option value="1">Primary</option>
                   <option value="2">Secondary</option>
                   <option value="3">Tertiary</option>
                 </select>
+                <span id="levelErrorMsg"></span>
             </div>
 
             <div class="wrap-input100 validate-input" data-validate = "Phone is required">
                 <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Select Preferred Time For Sessions:</span></label>
-                 <select name="cars" id="cars">
-                  <option value="volvo">-- Session Days --</option>
-                  <option value="volvo">Weekdays</option>
-                  <option value="opel">Weekends</option>
+                 <select name="usrSessTime" id="usrSessTime">
+                  <option value="0">-- Session Days --</option>
+                  <option value="1">Weekdays</option>
+                  <option value="2">Weekends</option>
                 </select>
+                <span id="sessErrorMsg"></span>
             </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Phone is required">
                     <label class="label-input100" for="phone"><span class="lnr lnr-phone-handset">Who is this tutelage for?</span></label>
-                    <input type="radio" id="male" name="teachwho" value="myself">
+                    <input type="radio" id="male" checked name="stuDef" value="myself">
                     <label for="male">Myself</label>
-                    <input type="radio" id="female" name="teachwho" value="mychild">
+                    <input type="radio" id="female" name="stuDef" value="mychild">
                     <label for="female">My child</label>
-                    <input type="radio" id="other" name="teachwho" value="some1else">
+                    <input type="radio" id="other" name="stuDef" value="some1else">
                     <label for="other">Someone else</label>
-        
+                    <span id="sessErrorMsg"></span>
             </div>
 
 <br>
@@ -78,14 +83,10 @@
 
             <div class="container-contact100-form-btn">
                 <div class="wrap-contact100-form-btn">
-                    <div class="contact100-form-bgbtn"></div>
-                    <button class="contact100-form-btn">
+                    <button id="btnSubmit" class="contact100-form-btn">
                         Send Email
                     </button>
                 </div>
             </div>
      
         </section>
-<div data-aos-delay="800">
-  <a href="#about" class="btn-get-started scrollto">Get Started</a>
-</div>
