@@ -3,10 +3,9 @@
 /* Primary link navigation OBJECT definition */
 class Nav{
 
+    /* Base OBJECT instantiation */
     constructor(){
-                /* XML Object Definition */
-               this.xhr = new XMLHttpRequest();
-           
+
                /* ABOUT link definition */
                this.aboutLink = document.getElementById("about");
                /* CONTACT link definition */
@@ -25,17 +24,19 @@ class Nav{
       
 /* Function defined to load info ASYNCHRONOUSLY from the server*/
       clickAboutHandler(){ 
-   
-          let xhr = new XMLHttpRequest();
-        
+       /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+          /* ASYNCHRONOUS call to ABOUT page content */
           xhr.open('GET', './assets/regions/content/about.html', true);
-       
-          xhr.onreadystatechange = function(){
+            /* ASYNCHRONOUS call to load ABOUT page content */
+            xhr.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200) {
                document.getElementById("content").innerHTML = this.responseText; 
             }
           }
-                  xhr.onerror = function(){
+          /* if ASYNCHRONOUS call fails load error message */
+                xhr.onerror = function(){
               console.log("Data request error...");
           }
       
@@ -45,21 +46,19 @@ class Nav{
    
   /* Function defined to load info ASYNCHRONOUSLY from the server */
        clickContactHandler(){  
-      
+             /* XML Object Definition */
         let xhr = new XMLHttpRequest();
-        
+                 /* ASYNCHRONOUS call to CONTACT page content */
               xhr.open('GET', './assets/regions/content/contact.html', true);
-           
+                /* ASYNCHRONOUS call to load CONTACT page content */
               xhr.onreadystatechange = function(){
                   if(this.readyState == 4 && this.status == 200){
-                  
-                    document.getElementById("content").innerHTML = this.responseText;
-                            new Form();
+                  document.getElementById("content").innerHTML = this.responseText;
                     /* Include contact form functionality here. */
-                  
-                      }
+                           new Form();
+                  }
               }
-          
+            /* if ASYNCHRONOUS call fails load error message */
               xhr.onerror = function(){
                   console.log("Data request error...");
               }
