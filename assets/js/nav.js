@@ -175,20 +175,23 @@ class Nav{
             this.emailInput.style = "border-color: #ff0000;";
             this.emailErrorMsg.style = "color: #ff0000;";
 
+            this.emailValid = false;
             return;
-
+            
         }else if(!Validator.validate(this.emailInput.value, Validator.MAX_LENGTH, 35)){
-                    this.emailErrorMsg.innerText = "Feedback exceeds limit!";
-                    this.emailInput.style = "border-color: #ff0000;";
-                    this.emailErrorMsg.style = "color: #ff0000;";
-                
-                    return;
-        
+            this.emailErrorMsg.innerText = "Feedback exceeds limit!";
+            this.emailInput.style = "border-color: #ff0000;";
+            this.emailErrorMsg.style = "color: #ff0000;";
+            
+            this.emailValid = false;
+            return;
+            
         } else if(!Validator.validate(this.emailInput.value, Validator.EMAIL)){
             this.emailErrorMsg.innerText = "Email format incorrect!";
             this.emailInput.style = "border-color: #ff0000;";
             this.emailErrorMsg.style = "color: #ff0000;";
-
+            
+            this.emailValid = false;
             return;
 
         } else if(Validator.validate(this.emailInput.value, Validator.EMAIL)) {
@@ -199,12 +202,6 @@ class Nav{
 
             this.emailValid = true;
         }
-
-            });
-
-              /* Function to respond to user interaction with PHONE input field  */
-              this.phoneInput.addEventListener("blur", () => {
-
 
             });
 
@@ -277,7 +274,119 @@ class Nav{
            
            });
 
+              /* Function to respond to user interaction with PHONE input field  */
+          
+this.usrMsg.addEventListener("blur", () => {
+    
+    /* MESSAGE Check */
+    if(!Validator.validate(this.usrMsg.value, Validator.REQUIRED)){
+       this.feedbackErrorMsg.innerText = "Blank feedback NOT allowed!!!";
+       this.usrMsg.style = "border-color: #ff0000;";
+       this.feedbackErrorMsg.style = "color: #ff0000;";
+       this.msgValid = false;
+       return;
+       
+   } else if(!Validator.validate(this.usrMsg.value, Validator.MAX_LENGTH, 140)){
+       this.feedbackErrorMsg.innerText = "Feedback exceeds limit!";
+       this.usrMsg.style = "border-color: #ff0000;";
+       this.feedbackErrorMsg.style = "color: #ff0000;";
+       this.msgValid = false;
+       
+       return;
+   
+   }else if(Validator.validate(this.usrMsg.value, Validator.REQUIRED)){
+   
+       this.feedbackErrorMsg.innerText = "";
+       this.usrMsg.style = "border-color: #2ecc71;";
+       this.feedbackErrorMsg.style = "display: none";
+   
+       this.msgValid = true;
+   }
+    
+   
+   });
+           
+this.btnSubmit.addEventListener("click", () => {
+    
+    /* Must validate the user input before processing. */
+     if(this.emailValid && this.msgValid && this.topicValid){
+
+/* Once the user has entered all their info correctly, then send these records to the server. */
+        console.log("Message Sent!");
+        
+        const request = new XMLHttpRequest();
+
+        let requestData = `email=${this.emailInput.value}`;
+        requestData += `&name=${this.nameInput.value}`;
+        requestData += `&contact=${this.phoneInput.value}`;
+        requestData += `&usrTopic=${this.usrTopic.value}`;
+        requestData += `&usrLevel=${this.usrLevel.value}`;
+        requestData += `&usrSessTime=${this.usrSessTime.value}`;
+        requestData += `&stuDef=${this.stuDef.value}`;
+        requestData += `&usrMsg=${this.usrMsg.value}`;
+
+            
+        request.open('post', './mail.php');
+        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        request.send(requestData);
+
+        /* Anonymous function to handle ASYNCHRONOUS server response. */
+        request.onload = () => {
+            
+            this.emailConfirm.innerHTML = "<b>Email Successfully Sent!</b>";
+            this.emailConfirm.style = "color: #2ecc71;";
+         
+            try {
+                // responseObject = JSON.parse(request.responseText);
+                   console.log(request.responseText);
+                  } catch(e) {
+                   console.error(e);
+                 }
+                        console.log('Contact Form Submitted!');
+                        console.log(requestData);
+            
+                       this.formDataDestroy();
+                       // this.emailConfirm.opacity = 0;
+        
+                }
+
+        } else {
+        this.emailConfirm.innerHTML = "";
+        this.emailConfirm.style = "color: #2ecc71;";
+        console.log("Message NOT Sent!");
+     }
+
+    });
+
         }
+
+        
+formDataDestroy(){
+
+    this.emailInput.value = "";
+    this.emailValid = false;
+    this.emailInput.style = "border-color: #ced4da;";
+ 
+    this.nameInput.value = "";
+    this.nameInput.style = "border-color: #ced4da;";
+ 
+    this.usrLevel.value = 0;
+    this.usrLevel.style = "border-color: #ced4da;";
+
+    this.phoneInput.value = "";
+    this.phoneInput.style = "border-color: #ced4da;";
+ 
+    this.usrSessTime.value = 0;
+    this.usrSessTime.style = "border-color: #ced4da;";
+   
+    this.usrTopic.value = 0;
+    this.usrTopic.style = "border-color: #ced4da;";
+    
+    this.usrMsg.value = "";
+    this.msgValid = false;
+    this.usrMsg.style = "border-color: #ced4da;";
+
+}
 
    }
 
