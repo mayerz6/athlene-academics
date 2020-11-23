@@ -6,11 +6,11 @@ class Nav{
     /* Base OBJECT instantiation */
     constructor(){
 
-               /* ABOUT link definition */
+               /* ABOUT link definition */       
                this.aboutLink = document.getElementById("about");
-               /* CONTACT link definition */
+                /* CONTACT link definition */
                this.contactLink = document.getElementById("contact");
-           
+              
                /* EVENTLISTENERS defined to respond to user interaction */
                this.aboutLink.addEventListener("click", this.clickAboutHandler);
                this.contactLink.addEventListener("click", this.clickContactHandler);  
@@ -24,6 +24,16 @@ class Nav{
       
 /* Function defined to load info ASYNCHRONOUSLY from the server*/
       clickAboutHandler(){ 
+       
+       let homeLinkStatus = document.getElementById("home-link");
+       homeLinkStatus.classList.remove("active");
+       
+       let contactLinkStatus = document.getElementById("contact-link");
+       contactLinkStatus.classList.remove("active");
+
+       let aboutLinkStatus = document.getElementById("about-link");
+       aboutLinkStatus.className = "active";
+
        /* XML Object Definition */
        let xhr = new XMLHttpRequest();
             
@@ -46,6 +56,16 @@ class Nav{
    
   /* Function defined to load info ASYNCHRONOUSLY from the server */
        clickContactHandler(){  
+
+        let homeLinkStatus = document.getElementById("home-link");
+       homeLinkStatus.classList.remove("active");
+       
+       let aboutLinkStatus = document.getElementById("about-link");
+       aboutLinkStatus.classList.remove("active");
+
+       let contactLinkStatus = document.getElementById("contact-link");
+       contactLinkStatus.className = "active";
+
              /* XML Object Definition */
         let xhr = new XMLHttpRequest();
                  /* ASYNCHRONOUS call to CONTACT page content */
