@@ -3,15 +3,14 @@
 /* Primary link navigation OBJECT definition */
 class Nav{
 
+    /* Base OBJECT instantiation */
     constructor(){
-                /* XML Object Definition */
-               this.xhr = new XMLHttpRequest();
-           
-               /* ABOUT link definition */
+
+               /* ABOUT link definition */       
                this.aboutLink = document.getElementById("about");
-               /* CONTACT link definition */
+                /* CONTACT link definition */
                this.contactLink = document.getElementById("contact");
-           
+              
                /* EVENTLISTENERS defined to respond to user interaction */
                this.aboutLink.addEventListener("click", this.clickAboutHandler);
                this.contactLink.addEventListener("click", this.clickContactHandler);  
@@ -25,17 +24,29 @@ class Nav{
       
 /* Function defined to load info ASYNCHRONOUSLY from the server*/
       clickAboutHandler(){ 
-   
-          let xhr = new XMLHttpRequest();
-        
-          xhr.open('GET', './assets/regions/content/about.html', true);
        
-          xhr.onreadystatechange = function(){
+       let homeLinkStatus = document.getElementById("home-link");
+       homeLinkStatus.classList.remove("active");
+       
+       let contactLinkStatus = document.getElementById("contact-link");
+       contactLinkStatus.classList.remove("active");
+
+       let aboutLinkStatus = document.getElementById("about-link");
+       aboutLinkStatus.className = "active";
+
+       /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+          /* ASYNCHRONOUS call to ABOUT page content */
+          xhr.open('GET', './assets/regions/content/about.html', true);
+            /* ASYNCHRONOUS call to load ABOUT page content */
+            xhr.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200) {
                document.getElementById("content").innerHTML = this.responseText; 
             }
           }
-                  xhr.onerror = function(){
+          /* if ASYNCHRONOUS call fails load error message */
+                xhr.onerror = function(){
               console.log("Data request error...");
           }
       
@@ -45,21 +56,29 @@ class Nav{
    
   /* Function defined to load info ASYNCHRONOUSLY from the server */
        clickContactHandler(){  
-      
+
+        let homeLinkStatus = document.getElementById("home-link");
+       homeLinkStatus.classList.remove("active");
+       
+       let aboutLinkStatus = document.getElementById("about-link");
+       aboutLinkStatus.classList.remove("active");
+
+       let contactLinkStatus = document.getElementById("contact-link");
+       contactLinkStatus.className = "active";
+
+             /* XML Object Definition */
         let xhr = new XMLHttpRequest();
-        
+                 /* ASYNCHRONOUS call to CONTACT page content */
               xhr.open('GET', './assets/regions/content/contact.html', true);
-           
+                /* ASYNCHRONOUS call to load CONTACT page content */
               xhr.onreadystatechange = function(){
                   if(this.readyState == 4 && this.status == 200){
-                  
-                    document.getElementById("content").innerHTML = this.responseText;
-                            new Form();
+                  document.getElementById("content").innerHTML = this.responseText;
                     /* Include contact form functionality here. */
-                  
-                      }
+                           new Form();
+                  }
               }
-          
+            /* if ASYNCHRONOUS call fails load error message */
               xhr.onerror = function(){
                   console.log("Data request error...");
               }
