@@ -6,14 +6,18 @@ class Nav{
     /* Base OBJECT instantiation */
     constructor(){
 
+                this.homeLinkStatus = document.getElementById("home-link");
+                this.contactLinkStatus = document.getElementById("contact-link");
+                this.aboutLinkStatus = document.getElementById("about-link");
+            
                /* ABOUT link definition */       
                this.aboutLink = document.getElementById("about");
                 /* CONTACT link definition */
                this.contactLink = document.getElementById("contact");
               
                /* EVENTLISTENERS defined to respond to user interaction */
-               this.aboutLink.addEventListener("click", this.clickAboutHandler);
-               this.contactLink.addEventListener("click", this.clickContactHandler);  
+               this.aboutLink.addEventListener("click", this.clickAboutHandler.bind(this));
+               this.contactLink.addEventListener("click", this.clickContactHandler.bind(this));  
            
                /* Copyright YEAR Definition */
                window.addEventListener("load", () => {
@@ -25,14 +29,11 @@ class Nav{
 /* Function defined to load info ASYNCHRONOUSLY from the server*/
       clickAboutHandler(){ 
        
-       let homeLinkStatus = document.getElementById("home-link");
-       homeLinkStatus.classList.remove("active");
-       
-       let contactLinkStatus = document.getElementById("contact-link");
-       contactLinkStatus.classList.remove("active");
-
-       let aboutLinkStatus = document.getElementById("about-link");
-       aboutLinkStatus.className = "active";
+     /* Responsive functionality based on user clicks  */
+        this.homeLinkStatus.removeAttribute("class");
+        this.contactLinkStatus.removeAttribute("class");
+             
+        this.aboutLinkStatus.className = "active";
 
        /* XML Object Definition */
        let xhr = new XMLHttpRequest();
@@ -57,14 +58,10 @@ class Nav{
   /* Function defined to load info ASYNCHRONOUSLY from the server */
        clickContactHandler(){  
 
-        let homeLinkStatus = document.getElementById("home-link");
-       homeLinkStatus.classList.remove("active");
-       
-       let aboutLinkStatus = document.getElementById("about-link");
-       aboutLinkStatus.classList.remove("active");
-
-       let contactLinkStatus = document.getElementById("contact-link");
-       contactLinkStatus.className = "active";
+        this.homeLinkStatus.removeAttribute("class");
+        this.aboutLinkStatus.removeAttribute("class");
+             
+        this.contactLinkStatus.className = "active";
 
              /* XML Object Definition */
         let xhr = new XMLHttpRequest();
