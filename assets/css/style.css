@@ -28,6 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #contactForm { outline: 1px solid #ddd; width: 100%; margin: 2em 0em; }
 #content { outline: 1px solid #000; }
+section#topicInfo { outline: 0px solid #ccc; padding: 0em; }
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/

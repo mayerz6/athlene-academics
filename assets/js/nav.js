@@ -9,6 +9,11 @@ class Nav{
                 this.homeLinkStatus = document.getElementById("home-link");
                 this.contactLinkStatus = document.getElementById("contact-link");
                 this.aboutLinkStatus = document.getElementById("about-link");
+              
+                this.mathLink = document.getElementById("math");
+                this.englishLink = document.getElementById("english");
+                this.physicsLink = document.getElementById("physics");
+                this.itLink = document.getElementById("it");
             
                /* ABOUT link definition */       
                this.aboutLink = document.getElementById("about");
@@ -18,6 +23,11 @@ class Nav{
                /* EVENTLISTENERS defined to respond to user interaction */
                this.aboutLink.addEventListener("click", this.clickAboutHandler.bind(this));
                this.contactLink.addEventListener("click", this.clickContactHandler.bind(this));  
+              
+               this.mathLink.addEventListener("click", this.clickMathHandler.bind(this));  
+               this.englishLink.addEventListener("click", this.clickEnglishHandler.bind(this));  
+               this.physicsLink.addEventListener("click", this.clickPhysicsHandler.bind(this));  
+               this.itLink.addEventListener("click", this.clickITHandler.bind(this));  
            
                /* Copyright YEAR Definition */
                window.addEventListener("load", () => {
@@ -25,11 +35,99 @@ class Nav{
                });
        }      
       
-      
+
+       clickMathHandler(){
+
+             /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/topics/math.html', true);
+         /* ASYNCHRONOUS call to load ABOUT page content */
+         xhr.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+         }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+             xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+   
+       xhr.send(); 
+
+         } 
+
+
+       clickEnglishHandler(){
+
+             /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/topics/english.html', true);
+         /* ASYNCHRONOUS call to load ABOUT page content */
+         xhr.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+         }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+             xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+   
+       xhr.send(); 
+
+         }
+
+       clickPhysicsHandler(){ 
+           
+             /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/topics/physics.html', true);
+         /* ASYNCHRONOUS call to load ABOUT page content */
+         xhr.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+         }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+             xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+   
+       xhr.send(); 
+        }
+       clickITHandler(){
+           
+             /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/topics/it.html', true);
+         /* ASYNCHRONOUS call to load ABOUT page content */
+         xhr.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+         }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+             xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+   
+       xhr.send(); 
+
+        }
+
+
 /* Function defined to load info ASYNCHRONOUSLY from the server*/
       clickAboutHandler(){ 
        
-     /* Responsive functionality based on user clicks  */
+     /* Responsive CSS functionality based on user clicks  */
         this.homeLinkStatus.removeAttribute("class");
         this.contactLinkStatus.removeAttribute("class");
              
