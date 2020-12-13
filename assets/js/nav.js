@@ -47,6 +47,7 @@ class Nav{
          xhr.onreadystatechange = function(){
        if(this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText; 
+            Tutor.clickMathTutors();
          }
        }
        /* if ASYNCHRONOUS call fails load error message */
@@ -92,6 +93,7 @@ class Nav{
          xhr.onreadystatechange = function(){
        if(this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText; 
+            Tutor.clickPhysicsTutors()
          }
        }
        /* if ASYNCHRONOUS call fails load error message */
@@ -171,6 +173,7 @@ class Nav{
                   document.getElementById("content").innerHTML = this.responseText;
                     /* Include contact form functionality here. */
                            new Form();
+                           
                   }
               }
             /* if ASYNCHRONOUS call fails load error message */
@@ -184,6 +187,69 @@ class Nav{
           
    }
    
+class Tutor{
+
+    static clickMathTutors() {
+        console.log("Tutor 1 link clicked!!!")
+        this.tutorLink = document.getElementById("tutor-1");
+        this.tutorLink.addEventListener("click", () => {
+                  /* XML Object Definition */
+                let xhr = new XMLHttpRequest();
+                    
+                /* ASYNCHRONOUS call to ABOUT page content */
+                xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                    /* ASYNCHRONOUS call to load ABOUT page content */
+                    xhr.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("content").innerHTML = this.responseText; 
+                    }
+                }
+                /* if ASYNCHRONOUS call fails load error message */
+                        xhr.onerror = function(){
+                    console.log("Data request error...");
+                }
+
+                xhr.send(); 
+        });           
+      }
+
+    
+      static clickPhysicsTutors() {
+        console.log("Physics Tutor link clicked!!!")
+     
+        const larryLink = document.getElementById("tutor-1");
+        const chrisLink = document.getElementById("tutor-7");
+        const mykelLink = document.getElementById("tutor-9");
+        const larry2Link = document.getElementById("tutor-11");
+      
+        larryLink.addEventListener("click", () => { loadContent("larry") });           
+        chrisLink.addEventListener("click", () => { loadContent("chris") });           
+        mykelLink.addEventListener("click", () => { loadContent("mykel") });           
+        larry2Link.addEventListener("click", () => { loadContent("larry") });           
+
+       function loadContent(content)
+        {
+            let xhr = new XMLHttpRequest();
+            
+            /* ASYNCHRONOUS call to ABOUT page content */
+            xhr.open('GET', './assets/regions/content/tutors/' + content + '.html', true);
+            /* ASYNCHRONOUS call to load ABOUT page content */
+            xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+            }
+            }
+            /* if ASYNCHRONOUS call fails load error message */
+                xhr.onerror = function(){
+            console.log("Data request error...");
+            }
+
+            xhr.send(); 
+        }
+      }  
+
+}
+
 
    class Form{
    

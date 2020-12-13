@@ -1,0 +1,8 @@
+html { box-sizing: border-box; }
+*,
+*:before,
+*:after { box-sizing: inherit; }
+
+body { font-family: Arial, Verdana, Geneva, Tahoma, sans-serif; color: #444; }
+div.logo-img { outline: 1px solid #000; }
+div.logo-text { outline: 1px solid #000; }
