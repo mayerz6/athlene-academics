@@ -4,5 +4,19 @@ html { box-sizing: border-box; }
 *:after { box-sizing: inherit; }
 
 body { font-family: Arial, Verdana, Geneva, Tahoma, sans-serif; color: #444; }
+header#header { border-bottom: 1px solid #ccc; }
+.bg-light { background-color: #fff!important;}
 div.logo-img { outline: 1px solid #000; }
 div.logo-text { outline: 1px solid #000; }
+section#hero { margin: 4em 0em; }
+img.nav-img-fluid { outline: 0px solid #000; width: 20%; }
+li a:hover { color: #EE5552; text-decoration: none; }
+span#content h1 { font-weight: 1000; }
+a.navbar-brand { outline: 0px solid #000; padding-left: 25%; margin-right: 0rem; }
+span.active .nav-link { font-weight: 400; color: #EE5552!important; }
+.navbar-toggler { margin-left: auto; margin-right: auto; }
+
+/* Desktop styles rendering */
+@media only screen and (min-width: 768px) {
+    a.navbar-brand { outline: 0px solid #000; padding: 0; }
+}

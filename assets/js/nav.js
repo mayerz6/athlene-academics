@@ -15,6 +15,7 @@ class Nav{
                 this.physicsLink = document.getElementById("physics");
                 this.itLink = document.getElementById("it");
             
+                this.homeLink = document.getElementById("home");
                /* ABOUT link definition */       
                this.aboutLink = document.getElementById("about");
                 /* CONTACT link definition */
@@ -54,7 +55,7 @@ class Nav{
              xhr.onerror = function(){
            console.log("Data request error...");
        }
-   
+
        xhr.send(); 
 
          } 
