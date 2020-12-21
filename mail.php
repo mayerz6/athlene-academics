@@ -19,12 +19,38 @@ $errMsg = array();
 
 if(!isset($email) || empty($email)){
     $valStatus = false;
+    $errMsg[] = "Blank email entries are NOT allowed!!!";
+}
+
+if(!isset($name) || empty($name)){
+    $valStatus = false;
     $errMsg[] = "Blank firstname entries are NOT allowed!!!";
 }
 
-if(!isset($msgTopic) || empty($msgTopic)){
+if(!isset($contact) || empty($contact)){
     $valStatus = false;
-    $errMsg[] = "Blank surname entries are NOT allowed!!!";
+    $errMsg[] = "Blank contact entries are NOT allowed!!!";
+}
+
+if(!isset($usrTopic) || empty($usrTopic)){
+    $valStatus = false;
+    $errMsg[] = "Blank topic selection entries are NOT allowed!!!";
+}
+
+if(!isset($usrLevel) || empty($usrLevel)){
+    $valStatus = false;
+    $errMsg[] = "Blank academic level entries are NOT allowed!!!";
+}
+
+if(!isset($stuDef) || empty($stuDef)){
+    $valStatus = false;
+    $errMsg[] = "Blank student status entries are NOT allowed!!!";
+}
+
+
+if(!isset($usrSessTime) || empty($usrSessTime)){
+    $valStatus = false;
+    $errMsg[] = "Blank session date entries are NOT allowed!!!";
 }
 
 if(!isset($usrMsg) || empty($usrMsg)){
@@ -32,27 +58,56 @@ if(!isset($usrMsg) || empty($usrMsg)){
     $errMsg[] = "Blank contact entries are NOT allowed!!!";
 }
 
+/*
 echo json_encode(
     array(
         'ok' => $valStatus,
         'messages' => $errMsg
     )
     );
-
-    switch ($msgTopic)  
+*/
+    switch ($usrTopic)  
     {     
         case 1:   
-            $msgTopic = "Technical Consultancy";  
+            $usrTopic = "Mathematics";  
                  break;  
         case 2:   
-            $msgTopic = "Mentorship Queries";  
+            $usrTopic = "Physics";  
                  break;  
         case 3:   
-            $msgTopic = "Job Interests";  
+            $usrTopic = "English Literature";  
                  break;  
         case 4:   
-            $msgTopic = "General Feedback";  
+            $usrTopic = "English Language";  
                  break;    
+        case 5:   
+            $usrTopic = "History";  
+                    break;    
+
+    } 
+
+    switch ($usrLevel)  
+    {     
+        case 1:   
+            $usrLevel = "Primary";  
+                 break;  
+        case 2:   
+            $usrLevel = "Secondary";  
+                 break;  
+        case 3:   
+            $usrLevel = "Teritary";  
+                 break;  
+
+    } 
+
+    switch ($usrSessTime)  
+    {     
+        case 1:   
+            $usrSessTime = "Weekdays";  
+                 break;  
+        case 2:   
+            $usrSessTime = "Weekends";  
+                 break;  
     } 
 
     //PHPMailer Object
@@ -65,7 +120,7 @@ $mail->isHTML(true);
 // 0 = off (for production use)
 // 1 = client messages
 // 2 = client and server messages
-$mail->SMTPDebug = 2;
+$mail->SMTPDebug = 0;
 
 //Ask for HTML-friendly debug output
 $mail->Debugoutput = 'html';
@@ -86,50 +141,39 @@ $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 
 
-$mail->Username = "info@larrymayers.site";
-$mail->Password = "M@y3rZ.S0urc3!6a";
+$mail->Username = "admin@athlene.site";
+$mail->Password = "M@y3rZ.@thl3n3!6a";
 
 //From email address and name
-$mail->From = "info@larrymayers.site";
-$mail->FromName = "Larry Mayers";
+$mail->From = "admin@athlene.site";
+$mail->FromName = "Athlene Learning - Tutelage Request Message";
 
 //To address and name
-$mail->addAddress("larry.mayers@outlook.com", "Larry Mayers");
+$mail->addAddress("admin@athlene.site", "Athlene Learning");
 // $mail->addAddress("info@larrymayers.site", "Larry Mayers"); //Recipient name is optional
 
 //Address to which recipient will reply
-// $mail->addReplyTo("larrymayers101@gmail.com", "Reply");
+$mail->addReplyTo($email, $name);
 
 //CC and BCC
- //$mail->addCC("info@larrymayers.site");
-//$mail->addBCC("larrymayers101@gmail.com");
+// $mail->addCC("admin@athlene.site");
+// $mail->addCC("larrymayers101@gmail.com");
+$mail->addBCC("info@larrymayers.site");
 
 //Send HTML or Plain Text email
 $mail->isHTML(true);
 
 //Set the subject line
-$mail->Subject = "Larry Mayers Site - Contact Form Messages";
-$mail->Body = "<p><b>" . $msgTopic . "</b> - Please review the received message below.</p><br>" . $usrMsg;
+$mail->Subject = "Tutelage Request - " . $usrTopic;
+$mail->Body = "<h1>" . $name .  "</h1><br><p><b>Contact: </b>" . $contact . "</p><br><p><b>Email: </b>" . $email . "</p><p><b>Requested Topic: </b>" . $usrTopic . "</p><p><b>Academic Level: </b>" . $usrLevel . "</p><p><b>Time Requested: </b>" . $usrSessTime . "</p><p><b>Student Designation: </b>" . $stuDef . "</p><h6>Please review the received message below.</h6><br>" . $usrMsg;
 //$mail->AltBody = "This is the plain text version of the email content";
-
-
-//Read an HTML message body from an external file, convert referenced images to embedded,
-//convert HTML into a basic plain-text alternative body
-// $mail->msgHTML(file_get_contents('contents.html'));
-
-//Replace the plain text body with one created manually
-// $mail->AltBody = 'This is a plain-text message body';
-
-//Attach an image file
-// $mail->addAttachment('images/phpmailer_mini.png');
-
 
 
 try {
     $mail->send();
-    echo "Message has been sent successfully";
+   // echo "Message has been sent successfully";
    
 
 } catch (Exception $e) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
+   // echo "Mailer Error: " . $mail->ErrorInfo;
 }

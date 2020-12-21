@@ -104,7 +104,8 @@ class Nav{
    
        xhr.send(); 
         }
-       clickITHandler(){
+
+        clickITHandler(){
            
              /* XML Object Definition */
        let xhr = new XMLHttpRequest();
@@ -281,7 +282,8 @@ class Tutor{
            this.usrMsg = document.getElementById("feedbackMsg");
            this.feedbackErrorMsg = document.getElementById("feedbackErrorMsg");
           
-           this.stuDef = document.getElementsByName("stuDef");
+         //  this.stuDef = document.getElementsByName("stuDef");
+          // this.stuDef = document.querySelector('input[name="stuDef"]:checked').value;
 
            this.emailConfirm = document.getElementById("emailConfirm");
             
@@ -493,9 +495,10 @@ this.btnSubmit.addEventListener("click", () => {
      if(this.emailValid && this.msgValid && this.topicValid){
 
 /* Once the user has entered all their info correctly, then send these records to the server. */
-        console.log("Message Sent!");
+       // console.log("Message Sent!");
         
         const request = new XMLHttpRequest();
+        let stuDef = document.querySelector('input[name="stuDef"]:checked');
 
         let requestData = `email=${this.emailInput.value}`;
         requestData += `&name=${this.nameInput.value}`;
@@ -503,7 +506,7 @@ this.btnSubmit.addEventListener("click", () => {
         requestData += `&usrTopic=${this.usrTopic.value}`;
         requestData += `&usrLevel=${this.usrLevel.value}`;
         requestData += `&usrSessTime=${this.usrSessTime.value}`;
-        requestData += `&stuDef=${this.stuDef.value}`;
+        requestData += `&stuDef=${stuDef.value}`;
         requestData += `&usrMsg=${this.usrMsg.value}`;
 
             
@@ -523,8 +526,8 @@ this.btnSubmit.addEventListener("click", () => {
                   } catch(e) {
                    console.error(e);
                  }
-                        console.log('Contact Form Submitted!');
-                        console.log(requestData);
+                    //    console.log('Contact Form Submitted!');
+                      //  console.log(requestData);
             
                        this.formDataDestroy();
                        // this.emailConfirm.opacity = 0;

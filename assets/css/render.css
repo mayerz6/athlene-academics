@@ -11,12 +11,32 @@ div.logo-text { outline: 1px solid #000; }
 section#hero { margin: 4em 0em; }
 img.nav-img-fluid { outline: 0px solid #000; width: 20%; }
 li a:hover { color: #EE5552; text-decoration: none; }
+td a:hover { color: #EE5552; text-decoration: none; }
+section#topicInfo span a:hover { color: #EE5552; text-decoration: none; }
 span#content h1 { font-weight: 1000; }
 a.navbar-brand { outline: 0px solid #000; padding-left: 25%; margin-right: 0rem; }
 span.active .nav-link { font-weight: 400; color: #EE5552!important; }
 .navbar-toggler { margin-left: auto; margin-right: auto; }
+footer#footer { margin-top: 2em; height: 80px; }
+section#topicInfo { outline: 0px solid #ddd; padding: 0.5em; }
+span.seqHead { color: #EE5552; font-weight: 1000; font-size: 18pt; }
 
+ol { padding:0; padding-left: 2rem; margin-top: 1em; }
+.btn-outline-warning {
+    color: #EE5552;
+    border-color: #EE5552;
+    width: 100%;
+    margin-top: .82em;
+    margin-left: 0em;
+}
 /* Desktop styles rendering */
 @media only screen and (min-width: 768px) {
     a.navbar-brand { outline: 0px solid #000; padding: 0; }
+
+    .btn-outline-warning {
+        color: #EE5552;
+        border-color: #EE5552;
+        width: 42%;
+        margin-top: .82em;
+    }
 }
