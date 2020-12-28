@@ -6,14 +6,29 @@ class Nav{
     /* Base OBJECT instantiation */
     constructor(){
 
+                this.homeLinkStatus = document.getElementById("home-link");
+                this.contactLinkStatus = document.getElementById("contact-link");
+                this.aboutLinkStatus = document.getElementById("about-link");
+              
+                this.mathLink = document.getElementById("math");
+                this.englishLink = document.getElementById("english");
+                this.physicsLink = document.getElementById("physics");
+                this.itLink = document.getElementById("it");
+            
+                this.homeLink = document.getElementById("home");
                /* ABOUT link definition */       
                this.aboutLink = document.getElementById("about");
                 /* CONTACT link definition */
                this.contactLink = document.getElementById("contact");
               
                /* EVENTLISTENERS defined to respond to user interaction */
-               this.aboutLink.addEventListener("click", this.clickAboutHandler);
-               this.contactLink.addEventListener("click", this.clickContactHandler);  
+               this.aboutLink.addEventListener("click", this.clickAboutHandler.bind(this));
+               this.contactLink.addEventListener("click", this.clickContactHandler.bind(this));  
+              
+               this.mathLink.addEventListener("click", this.clickMathHandler.bind(this));  
+               this.englishLink.addEventListener("click", this.clickEnglishHandler.bind(this));  
+               this.physicsLink.addEventListener("click", this.clickPhysicsHandler.bind(this));  
+               this.itLink.addEventListener("click", this.clickITHandler.bind(this));  
            
                /* Copyright YEAR Definition */
                window.addEventListener("load", () => {
@@ -21,18 +36,106 @@ class Nav{
                });
        }      
       
-      
+
+       clickMathHandler(){
+
+             /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/topics/math.html', true);
+         /* ASYNCHRONOUS call to load ABOUT page content */
+         xhr.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+            Tutor.clickMathTutors();
+         }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+             xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+
+       xhr.send(); 
+
+         } 
+
+
+       clickEnglishHandler(){
+
+             /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/topics/english.html', true);
+         /* ASYNCHRONOUS call to load ABOUT page content */
+         xhr.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+         }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+             xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+   
+       xhr.send(); 
+
+         }
+
+       clickPhysicsHandler(){ 
+           
+             /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/topics/physics.html', true);
+         /* ASYNCHRONOUS call to load ABOUT page content */
+         xhr.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+            Tutor.clickPhysicsTutors()
+         }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+             xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+   
+       xhr.send(); 
+        }
+
+        clickITHandler(){
+           
+             /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+            
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/topics/it.html', true);
+         /* ASYNCHRONOUS call to load ABOUT page content */
+         xhr.onreadystatechange = function(){
+       if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+         }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+             xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+   
+       xhr.send(); 
+
+        }
+
+
 /* Function defined to load info ASYNCHRONOUSLY from the server*/
       clickAboutHandler(){ 
        
-       let homeLinkStatus = document.getElementById("home-link");
-       homeLinkStatus.classList.remove("active");
-       
-       let contactLinkStatus = document.getElementById("contact-link");
-       contactLinkStatus.classList.remove("active");
-
-       let aboutLinkStatus = document.getElementById("about-link");
-       aboutLinkStatus.className = "active";
+     /* Responsive CSS functionality based on user clicks  */
+        this.homeLinkStatus.removeAttribute("class");
+        this.contactLinkStatus.removeAttribute("class");
+             
+        this.aboutLinkStatus.className = "active";
 
        /* XML Object Definition */
        let xhr = new XMLHttpRequest();
@@ -57,14 +160,10 @@ class Nav{
   /* Function defined to load info ASYNCHRONOUSLY from the server */
        clickContactHandler(){  
 
-        let homeLinkStatus = document.getElementById("home-link");
-       homeLinkStatus.classList.remove("active");
-       
-       let aboutLinkStatus = document.getElementById("about-link");
-       aboutLinkStatus.classList.remove("active");
-
-       let contactLinkStatus = document.getElementById("contact-link");
-       contactLinkStatus.className = "active";
+        this.homeLinkStatus.removeAttribute("class");
+        this.aboutLinkStatus.removeAttribute("class");
+             
+        this.contactLinkStatus.className = "active";
 
              /* XML Object Definition */
         let xhr = new XMLHttpRequest();
@@ -76,6 +175,7 @@ class Nav{
                   document.getElementById("content").innerHTML = this.responseText;
                     /* Include contact form functionality here. */
                            new Form();
+                           
                   }
               }
             /* if ASYNCHRONOUS call fails load error message */
@@ -89,6 +189,69 @@ class Nav{
           
    }
    
+class Tutor{
+
+    static clickMathTutors() {
+        console.log("Tutor 1 link clicked!!!")
+        this.tutorLink = document.getElementById("tutor-1");
+        this.tutorLink.addEventListener("click", () => {
+                  /* XML Object Definition */
+                let xhr = new XMLHttpRequest();
+                    
+                /* ASYNCHRONOUS call to ABOUT page content */
+                xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                    /* ASYNCHRONOUS call to load ABOUT page content */
+                    xhr.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("content").innerHTML = this.responseText; 
+                    }
+                }
+                /* if ASYNCHRONOUS call fails load error message */
+                        xhr.onerror = function(){
+                    console.log("Data request error...");
+                }
+
+                xhr.send(); 
+        });           
+      }
+
+    
+      static clickPhysicsTutors() {
+        console.log("Physics Tutor link clicked!!!")
+     
+        const larryLink = document.getElementById("tutor-1");
+        const chrisLink = document.getElementById("tutor-7");
+        const mykelLink = document.getElementById("tutor-9");
+        const larry2Link = document.getElementById("tutor-11");
+      
+        larryLink.addEventListener("click", () => { loadContent("larry") });           
+        chrisLink.addEventListener("click", () => { loadContent("chris") });           
+        mykelLink.addEventListener("click", () => { loadContent("mykel") });           
+        larry2Link.addEventListener("click", () => { loadContent("larry") });           
+
+       function loadContent(content)
+        {
+            let xhr = new XMLHttpRequest();
+            
+            /* ASYNCHRONOUS call to ABOUT page content */
+            xhr.open('GET', './assets/regions/content/tutors/' + content + '.html', true);
+            /* ASYNCHRONOUS call to load ABOUT page content */
+            xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+            }
+            }
+            /* if ASYNCHRONOUS call fails load error message */
+                xhr.onerror = function(){
+            console.log("Data request error...");
+            }
+
+            xhr.send(); 
+        }
+      }  
+
+}
+
 
    class Form{
    
@@ -119,7 +282,8 @@ class Nav{
            this.usrMsg = document.getElementById("feedbackMsg");
            this.feedbackErrorMsg = document.getElementById("feedbackErrorMsg");
           
-           this.stuDef = document.getElementsByName("stuDef");
+         //  this.stuDef = document.getElementsByName("stuDef");
+          // this.stuDef = document.querySelector('input[name="stuDef"]:checked').value;
 
            this.emailConfirm = document.getElementById("emailConfirm");
             
@@ -331,9 +495,10 @@ this.btnSubmit.addEventListener("click", () => {
      if(this.emailValid && this.msgValid && this.topicValid){
 
 /* Once the user has entered all their info correctly, then send these records to the server. */
-        console.log("Message Sent!");
+       // console.log("Message Sent!");
         
         const request = new XMLHttpRequest();
+        let stuDef = document.querySelector('input[name="stuDef"]:checked');
 
         let requestData = `email=${this.emailInput.value}`;
         requestData += `&name=${this.nameInput.value}`;
@@ -341,7 +506,7 @@ this.btnSubmit.addEventListener("click", () => {
         requestData += `&usrTopic=${this.usrTopic.value}`;
         requestData += `&usrLevel=${this.usrLevel.value}`;
         requestData += `&usrSessTime=${this.usrSessTime.value}`;
-        requestData += `&stuDef=${this.stuDef.value}`;
+        requestData += `&stuDef=${stuDef.value}`;
         requestData += `&usrMsg=${this.usrMsg.value}`;
 
             
@@ -361,8 +526,8 @@ this.btnSubmit.addEventListener("click", () => {
                   } catch(e) {
                    console.error(e);
                  }
-                        console.log('Contact Form Submitted!');
-                        console.log(requestData);
+                    //    console.log('Contact Form Submitted!');
+                      //  console.log(requestData);
             
                        this.formDataDestroy();
                        // this.emailConfirm.opacity = 0;

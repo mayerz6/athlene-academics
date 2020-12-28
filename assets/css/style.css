@@ -26,6 +26,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
 
+#contactForm { outline: 1px solid #ddd; width: 100%; margin: 2em 0em; }
+#content { outline: 1px solid #000; }
+section#topicInfo { outline: 0px solid #ccc; padding: 0em; }
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -362,7 +365,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 70vh;
+/*  height: 70vh; */
   margin-top: 70px;
 }
 
@@ -410,7 +413,8 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 991px) {
   #hero {
-    height: 100vh;
+   /* height: 100vh; */
+   height: 100%;
   }
   #hero .animated {
     -webkit-animation: none;
