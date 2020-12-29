@@ -513,7 +513,9 @@ this.btnSubmit.addEventListener("click", () => {
         request.open('post', './mail.php');
         request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         request.send(requestData);
-
+        this.emailConfirm.innerHTML = "...Sending Message";
+        this.emailConfirm.style = "color: #EE5552;";
+          
         /* Anonymous function to handle ASYNCHRONOUS server response. */
         request.onload = () => {
             
