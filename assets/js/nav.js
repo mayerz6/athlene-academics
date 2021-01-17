@@ -202,8 +202,11 @@ class Tutor{
                 xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
                     /* ASYNCHRONOUS call to load ABOUT page content */
                     xhr.onreadystatechange = function(){
+
                 if(this.readyState == 4 && this.status == 200) {
                     document.getElementById("content").innerHTML = this.responseText; 
+                        const contact = document.getElementById("sessReq");
+                        contact.addEventListener("click", () => { loadContent("contact") });
                     }
                 }
                 /* if ASYNCHRONOUS call fails load error message */
@@ -213,6 +216,27 @@ class Tutor{
 
                 xhr.send(); 
         });           
+
+        function loadContent(content)
+        {
+            let xhr = new XMLHttpRequest();
+            
+            /* ASYNCHRONOUS call to ABOUT page content */
+            xhr.open('GET', './assets/regions/content/' + content + '.html', true);
+            /* ASYNCHRONOUS call to load ABOUT page content */
+            xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+            new Form();
+            }
+            }
+            /* if ASYNCHRONOUS call fails load error message */
+                xhr.onerror = function(){
+            console.log("Data request error...");
+            }
+
+            xhr.send(); 
+        }
       }
 
     
@@ -537,8 +561,10 @@ this.btnSubmit.addEventListener("click", () => {
                 }
 
         } else {
-        this.emailConfirm.innerHTML = "";
-        this.emailConfirm.style = "color: #2ecc71;";
+         
+            this.emailConfirm.innerHTML = "<b>Please complete the form details above.</b>";
+            this.emailConfirm.style = "color: #ff0000;";
+         
         console.log("Message NOT Sent!");
      }
 
