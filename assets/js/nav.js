@@ -5,26 +5,36 @@ class Nav{
 
     /* Base OBJECT instantiation */
     constructor(){
-
+            /* Define all link states for PRIMARY navigation links */
                 this.homeLinkStatus = document.getElementById("home-link");
                 this.contactLinkStatus = document.getElementById("contact-link");
                 this.aboutLinkStatus = document.getElementById("about-link");
-              
+                this.scheduleLinkStatus = document.getElementById("schedule-link");
+            /* Define all links found in SUBJECT navigation section */        
                 this.mathLink = document.getElementById("math");
                 this.englishLink = document.getElementById("english");
                 this.physicsLink = document.getElementById("physics");
                 this.itLink = document.getElementById("it");
-            
+                
+            /* Define all links found in PRIMARY navigation bar */
+
+               /* HOME link definition */
                 this.homeLink = document.getElementById("home");
                /* ABOUT link definition */       
                this.aboutLink = document.getElementById("about");
                 /* CONTACT link definition */
                this.contactLink = document.getElementById("contact");
+              /* SCHEDULE link definition */
+              this.scheduleLink = document.getElementById("schedule");
               
                /* EVENTLISTENERS defined to respond to user interaction */
+              
+               // NAVBAR
                this.aboutLink.addEventListener("click", this.clickAboutHandler.bind(this));
                this.contactLink.addEventListener("click", this.clickContactHandler.bind(this));  
-              
+               this.scheduleLink.addEventListener("click", this.clickScheduleHandler.bind(this));  
+
+                // TOPICS
                this.mathLink.addEventListener("click", this.clickMathHandler.bind(this));  
                this.englishLink.addEventListener("click", this.clickEnglishHandler.bind(this));  
                this.physicsLink.addEventListener("click", this.clickPhysicsHandler.bind(this));  
@@ -128,13 +138,14 @@ class Nav{
         }
 
 
-/* Function defined to load info ASYNCHRONOUSLY from the server*/
+/* Function defined to load ABOUT info ASYNCHRONOUSLY from the server*/
       clickAboutHandler(){ 
        
      /* Responsive CSS functionality based on user clicks  */
         this.homeLinkStatus.removeAttribute("class");
         this.contactLinkStatus.removeAttribute("class");
-             
+        this.scheduleLinkStatus.removeAttribute("class");
+        
         this.aboutLinkStatus.className = "active";
 
        /* XML Object Definition */
@@ -157,12 +168,13 @@ class Nav{
        
        }
    
-  /* Function defined to load info ASYNCHRONOUSLY from the server */
+  /* Function defined to load CONTACT info ASYNCHRONOUSLY from the server */
        clickContactHandler(){  
 
         this.homeLinkStatus.removeAttribute("class");
         this.aboutLinkStatus.removeAttribute("class");
-             
+        this.scheduleLinkStatus.removeAttribute("class");
+
         this.contactLinkStatus.className = "active";
 
              /* XML Object Definition */
@@ -186,7 +198,47 @@ class Nav{
               xhr.send(); 
           
        }
+
+    /* Function defined to load CALENDAR UI info ASYNCHRONOUSLY from the server */
+       clickScheduleHandler(){  
+
+        this.homeLinkStatus.removeAttribute("class");
+        this.aboutLinkStatus.removeAttribute("class");
+        this.contactLinkStatus.removeAttribute("class");
+             
+        this.scheduleLinkStatus.className = "active";      
+
+             /* XML Object Definition */
+        let xhr = new XMLHttpRequest();
+                 /* ASYNCHRONOUS call to CONTACT page content */
+              xhr.open('GET', './assets/regions/content/schedule.html', true);
+                /* ASYNCHRONOUS call to load CONTACT page content */
+              xhr.onreadystatechange = function(){
+                  if(this.readyState == 4 && this.status == 200){
+                  document.getElementById("content").innerHTML = this.responseText;
+                    /* Include contact form functionality here. */
+                          // new Form();
+                       
+                         
+            let calendarEl = document.getElementById('calendar');
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+              initialView: 'dayGridMonth',
+                height: '780'
+            });
+            calendar.render();
+     
+                  }
+              }
+            /* if ASYNCHRONOUS call fails load error message */
+              xhr.onerror = function(){
+                  console.log("Data request error...");
+              }
           
+              xhr.send(); 
+          
+       }
+        
+       
    }
    
 class Tutor{
@@ -275,6 +327,7 @@ class Tutor{
       }  
 
 }
+
 
 
    class Form{
