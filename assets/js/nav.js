@@ -5,30 +5,39 @@ class Nav{
 
     /* Base OBJECT instantiation */
     constructor(){
+
             /* Define all link states for PRIMARY navigation links */
                 this.homeLinkStatus = document.getElementById("home-link");
                 this.contactLinkStatus = document.getElementById("contact-link");
                 this.aboutLinkStatus = document.getElementById("about-link");
                 this.scheduleLinkStatus = document.getElementById("schedule-link");
-            /* Define all links found in SUBJECT navigation section */        
-                this.mathLink = document.getElementById("math");
-                this.englishLink = document.getElementById("english");
-                this.physicsLink = document.getElementById("physics");
-                this.itLink = document.getElementById("it");
-                
-            /* Define all links found in PRIMARY navigation bar */
 
-               /* HOME link definition */
-                this.homeLink = document.getElementById("home");
+            /* Define all links found in SUBJECT navigation section */        
+            this.mathLink = document.getElementById("math");
+            this.englishLink = document.getElementById("english");
+            this.physicsLink = document.getElementById("physics");
+            this.itLink = document.getElementById("it");
+
+            /* Define all links found in SUBJECT navigation section */        
+            this.historyLink = document.getElementById("history");
+            this.soc_studLink = document.getElementById("social-studies");
+            this.spanishLink = document.getElementById("spanish");
+            this.frenchLink = document.getElementById("french");
+            
+            /* Define all links found in PRIMARY navigation bar */
+              /* ########################################## */
+            /* HOME link definition */
+               // this.homeLink = document.getElementById("home"); // NOT necessary
                /* ABOUT link definition */       
                this.aboutLink = document.getElementById("about");
                 /* CONTACT link definition */
                this.contactLink = document.getElementById("contact");
               /* SCHEDULE link definition */
               this.scheduleLink = document.getElementById("schedule");
-              
+              /* ########################################## */
+
+
                /* EVENTLISTENERS defined to respond to user interaction */
-              
                // NAVBAR
                this.aboutLink.addEventListener("click", this.clickAboutHandler.bind(this));
                this.contactLink.addEventListener("click", this.clickContactHandler.bind(this));  
@@ -70,7 +79,6 @@ class Nav{
 
          } 
 
-
        clickEnglishHandler(){
 
              /* XML Object Definition */
@@ -82,6 +90,7 @@ class Nav{
          xhr.onreadystatechange = function(){
        if(this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText; 
+            Tutor.clickEnglishTutors()
          }
        }
        /* if ASYNCHRONOUS call fails load error message */
@@ -104,7 +113,7 @@ class Nav{
          xhr.onreadystatechange = function(){
        if(this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText; 
-            Tutor.clickPhysicsTutors()
+            Tutor.clickPhysicsTutors();
          }
        }
        /* if ASYNCHRONOUS call fails load error message */
@@ -126,6 +135,7 @@ class Nav{
          xhr.onreadystatechange = function(){
        if(this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText; 
+            Tutor.clickITTutors();
          }
        }
        /* if ASYNCHRONOUS call fails load error message */
@@ -237,16 +247,20 @@ class Nav{
               xhr.send(); 
           
        }
-        
        
-   }
+}
    
+
 class Tutor{
 
     static clickMathTutors() {
-        console.log("Tutor 1 link clicked!!!")
-        this.tutorLink = document.getElementById("tutor-1");
-        this.tutorLink.addEventListener("click", () => {
+       // console.log("Maths Tutor link clicked!!!")
+        this.tutorLink_1 = document.getElementById("tutor-1");
+        this.tutorLink_2 = document.getElementById("tutor-2");
+        this.tutorLink_3 = document.getElementById("tutor-3");
+        this.tutorLink_4 = document.getElementById("tutor-4");
+       
+        this.tutorLink_1.addEventListener("click", () => {
                   /* XML Object Definition */
                 let xhr = new XMLHttpRequest();
                     
@@ -267,7 +281,78 @@ class Tutor{
                 }
 
                 xhr.send(); 
-        });           
+        });      
+        
+        this.tutorLink_2.addEventListener("click", () => {
+            /* XML Object Definition */
+          let xhr = new XMLHttpRequest();
+              
+          /* ASYNCHRONOUS call to ABOUT page content */
+          xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+              /* ASYNCHRONOUS call to load ABOUT page content */
+              xhr.onreadystatechange = function(){
+
+          if(this.readyState == 4 && this.status == 200) {
+              document.getElementById("content").innerHTML = this.responseText; 
+                  const contact = document.getElementById("sessReq");
+                  contact.addEventListener("click", () => { loadContent("contact") });
+              }
+          }
+          /* if ASYNCHRONOUS call fails load error message */
+                  xhr.onerror = function(){
+              console.log("Data request error...");
+          }
+
+          xhr.send(); 
+
+        });        
+
+          this.tutorLink_3.addEventListener("click", () => {
+                  /* XML Object Definition */
+                let xhr = new XMLHttpRequest();
+                    
+                /* ASYNCHRONOUS call to ABOUT page content */
+                xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                    /* ASYNCHRONOUS call to load ABOUT page content */
+                    xhr.onreadystatechange = function(){
+
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("content").innerHTML = this.responseText; 
+                        const contact = document.getElementById("sessReq");
+                        contact.addEventListener("click", () => { loadContent("contact") });
+                    }
+                }
+                /* if ASYNCHRONOUS call fails load error message */
+                        xhr.onerror = function(){
+                    console.log("Data request error...");
+                }
+
+                xhr.send(); 
+        });     
+        
+        this.tutorLink_4.addEventListener("click", () => {
+            /* XML Object Definition */
+          let xhr = new XMLHttpRequest();
+              
+          /* ASYNCHRONOUS call to ABOUT page content */
+          xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+              /* ASYNCHRONOUS call to load ABOUT page content */
+              xhr.onreadystatechange = function(){
+
+          if(this.readyState == 4 && this.status == 200) {
+              document.getElementById("content").innerHTML = this.responseText; 
+                  const contact = document.getElementById("sessReq");
+                  contact.addEventListener("click", () => { loadContent("contact") });
+              }
+          }
+          /* if ASYNCHRONOUS call fails load error message */
+                  xhr.onerror = function(){
+              console.log("Data request error...");
+          }
+
+          xhr.send(); 
+  });           
+
 
         function loadContent(content)
         {
@@ -279,7 +364,7 @@ class Tutor{
             xhr.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText; 
-            new Form();
+                 new Form();
             }
             }
             /* if ASYNCHRONOUS call fails load error message */
@@ -289,32 +374,123 @@ class Tutor{
 
             xhr.send(); 
         }
+
       }
 
     
       static clickPhysicsTutors() {
-        console.log("Physics Tutor link clicked!!!")
-     
-        const larryLink = document.getElementById("tutor-1");
-        const chrisLink = document.getElementById("tutor-7");
-        const mykelLink = document.getElementById("tutor-9");
-        const larry2Link = document.getElementById("tutor-11");
+       // console.log("Physics Tutor link clicked!!!")
+       this.tutorLink_1 = document.getElementById("tutor-1");
+       this.tutorLink_2 = document.getElementById("tutor-2");
+       this.tutorLink_3 = document.getElementById("tutor-3");
+       this.tutorLink_4 = document.getElementById("tutor-4");
       
-        larryLink.addEventListener("click", () => { loadContent("larry") });           
-        chrisLink.addEventListener("click", () => { loadContent("chris") });           
-        mykelLink.addEventListener("click", () => { loadContent("mykel") });           
-        larry2Link.addEventListener("click", () => { loadContent("larry") });           
+        
+       this.tutorLink_1.addEventListener("click", () => {
+        /* XML Object Definition */
+      let xhr = new XMLHttpRequest();
+          
+      /* ASYNCHRONOUS call to ABOUT page content */
+      xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+          /* ASYNCHRONOUS call to load ABOUT page content */
+          xhr.onreadystatechange = function(){
 
-       function loadContent(content)
-        {
+      if(this.readyState == 4 && this.status == 200) {
+          document.getElementById("content").innerHTML = this.responseText; 
+              const contact = document.getElementById("sessReq");
+              contact.addEventListener("click", () => { loadContent("contact") });
+          }
+      }
+      /* if ASYNCHRONOUS call fails load error message */
+              xhr.onerror = function(){
+          console.log("Data request error...");
+      }
+
+      xhr.send(); 
+        });      
+
+            this.tutorLink_2.addEventListener("click", () => {
+            /* XML Object Definition */
+            let xhr = new XMLHttpRequest();
+                
+            /* ASYNCHRONOUS call to ABOUT page content */
+            xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                /* ASYNCHRONOUS call to load ABOUT page content */
+                xhr.onreadystatechange = function(){
+
+            if(this.readyState == 4 && this.status == 200) {
+                document.getElementById("content").innerHTML = this.responseText; 
+                    const contact = document.getElementById("sessReq");
+                    contact.addEventListener("click", () => { loadContent("contact") });
+                }
+            }
+            /* if ASYNCHRONOUS call fails load error message */
+                    xhr.onerror = function(){
+                console.log("Data request error...");
+            }
+
+            xhr.send(); 
+
+            });        
+
+            this.tutorLink_3.addEventListener("click", () => {
+                    /* XML Object Definition */
+                let xhr = new XMLHttpRequest();
+                    
+                /* ASYNCHRONOUS call to ABOUT page content */
+                xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                    /* ASYNCHRONOUS call to load ABOUT page content */
+                    xhr.onreadystatechange = function(){
+
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("content").innerHTML = this.responseText; 
+                        const contact = document.getElementById("sessReq");
+                        contact.addEventListener("click", () => { loadContent("contact") });
+                    }
+                }
+                /* if ASYNCHRONOUS call fails load error message */
+                        xhr.onerror = function(){
+                    console.log("Data request error...");
+                }
+
+                xhr.send(); 
+            });     
+
+            this.tutorLink_4.addEventListener("click", () => {
+            /* XML Object Definition */
+            let xhr = new XMLHttpRequest();
+                
+            /* ASYNCHRONOUS call to ABOUT page content */
+            xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                /* ASYNCHRONOUS call to load ABOUT page content */
+                xhr.onreadystatechange = function(){
+
+            if(this.readyState == 4 && this.status == 200) {
+                document.getElementById("content").innerHTML = this.responseText; 
+                    const contact = document.getElementById("sessReq");
+                    contact.addEventListener("click", () => { loadContent("contact") });
+                }
+            }
+            /* if ASYNCHRONOUS call fails load error message */
+                    xhr.onerror = function(){
+                console.log("Data request error...");
+            }
+
+            xhr.send(); 
+            });           
+
+
+            function loadContent(content)
+            {
             let xhr = new XMLHttpRequest();
             
             /* ASYNCHRONOUS call to ABOUT page content */
-            xhr.open('GET', './assets/regions/content/tutors/' + content + '.html', true);
+            xhr.open('GET', './assets/regions/content/' + content + '.html', true);
             /* ASYNCHRONOUS call to load ABOUT page content */
             xhr.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText; 
+                new Form();
             }
             }
             /* if ASYNCHRONOUS call fails load error message */
@@ -323,8 +499,263 @@ class Tutor{
             }
 
             xhr.send(); 
-        }
+            }
+
       }  
+
+
+      
+      static clickEnglishTutors() {
+        // console.log("Physics Tutor link clicked!!!")
+        this.tutorLink_1 = document.getElementById("tutor-1");
+        this.tutorLink_2 = document.getElementById("tutor-2");
+        this.tutorLink_3 = document.getElementById("tutor-3");
+        this.tutorLink_4 = document.getElementById("tutor-4");
+       
+         
+        this.tutorLink_1.addEventListener("click", () => {
+         /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+           
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/tutors/ingrid.html', true);
+           /* ASYNCHRONOUS call to load ABOUT page content */
+           xhr.onreadystatechange = function(){
+ 
+       if(this.readyState == 4 && this.status == 200) {
+           document.getElementById("content").innerHTML = this.responseText; 
+               const contact = document.getElementById("sessReq");
+               contact.addEventListener("click", () => { loadContent("contact") });
+           }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+               xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+ 
+       xhr.send(); 
+         });      
+ 
+             this.tutorLink_2.addEventListener("click", () => {
+             /* XML Object Definition */
+             let xhr = new XMLHttpRequest();
+                 
+             /* ASYNCHRONOUS call to ABOUT page content */
+             xhr.open('GET', './assets/regions/content/tutors/nicole.html', true);
+                 /* ASYNCHRONOUS call to load ABOUT page content */
+                 xhr.onreadystatechange = function(){
+ 
+             if(this.readyState == 4 && this.status == 200) {
+                 document.getElementById("content").innerHTML = this.responseText; 
+                     const contact = document.getElementById("sessReq");
+                     contact.addEventListener("click", () => { loadContent("contact") });
+                 }
+             }
+             /* if ASYNCHRONOUS call fails load error message */
+                     xhr.onerror = function(){
+                 console.log("Data request error...");
+             }
+ 
+             xhr.send(); 
+ 
+             });        
+ 
+             this.tutorLink_3.addEventListener("click", () => {
+                     /* XML Object Definition */
+                 let xhr = new XMLHttpRequest();
+                     
+                 /* ASYNCHRONOUS call to ABOUT page content */
+                 xhr.open('GET', './assets/regions/content/tutors/nicole.html', true);
+                     /* ASYNCHRONOUS call to load ABOUT page content */
+                     xhr.onreadystatechange = function(){
+ 
+                 if(this.readyState == 4 && this.status == 200) {
+                     document.getElementById("content").innerHTML = this.responseText; 
+                         const contact = document.getElementById("sessReq");
+                         contact.addEventListener("click", () => { loadContent("contact") });
+                     }
+                 }
+                 /* if ASYNCHRONOUS call fails load error message */
+                         xhr.onerror = function(){
+                     console.log("Data request error...");
+                 }
+ 
+                 xhr.send(); 
+             });     
+ 
+             this.tutorLink_4.addEventListener("click", () => {
+             /* XML Object Definition */
+             let xhr = new XMLHttpRequest();
+                 
+             /* ASYNCHRONOUS call to ABOUT page content */
+             xhr.open('GET', './assets/regions/content/tutors/toni.html', true);
+                 /* ASYNCHRONOUS call to load ABOUT page content */
+                 xhr.onreadystatechange = function(){
+ 
+             if(this.readyState == 4 && this.status == 200) {
+                 document.getElementById("content").innerHTML = this.responseText; 
+                     const contact = document.getElementById("sessReq");
+                     contact.addEventListener("click", () => { loadContent("contact") });
+                 }
+             }
+             /* if ASYNCHRONOUS call fails load error message */
+                     xhr.onerror = function(){
+                 console.log("Data request error...");
+             }
+ 
+             xhr.send(); 
+             });           
+ 
+ 
+             function loadContent(content)
+             {
+             let xhr = new XMLHttpRequest();
+             
+             /* ASYNCHRONOUS call to ABOUT page content */
+             xhr.open('GET', './assets/regions/content/' + content + '.html', true);
+             /* ASYNCHRONOUS call to load ABOUT page content */
+             xhr.onreadystatechange = function(){
+             if(this.readyState == 4 && this.status == 200) {
+             document.getElementById("content").innerHTML = this.responseText; 
+                 new Form();
+             }
+             }
+             /* if ASYNCHRONOUS call fails load error message */
+                 xhr.onerror = function(){
+             console.log("Data request error...");
+             }
+ 
+             xhr.send(); 
+             }
+ 
+       }  
+
+
+       
+      static clickITTutors() {
+        // console.log("Physics Tutor link clicked!!!")
+        this.tutorLink_1 = document.getElementById("tutor-1");
+        this.tutorLink_2 = document.getElementById("tutor-2");
+        this.tutorLink_3 = document.getElementById("tutor-3");
+        this.tutorLink_4 = document.getElementById("tutor-4");
+       
+         
+        this.tutorLink_1.addEventListener("click", () => {
+         /* XML Object Definition */
+       let xhr = new XMLHttpRequest();
+           
+       /* ASYNCHRONOUS call to ABOUT page content */
+       xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+           /* ASYNCHRONOUS call to load ABOUT page content */
+           xhr.onreadystatechange = function(){
+ 
+       if(this.readyState == 4 && this.status == 200) {
+           document.getElementById("content").innerHTML = this.responseText; 
+               const contact = document.getElementById("sessReq");
+               contact.addEventListener("click", () => { loadContent("contact") });
+           }
+       }
+       /* if ASYNCHRONOUS call fails load error message */
+               xhr.onerror = function(){
+           console.log("Data request error...");
+       }
+ 
+       xhr.send(); 
+         });      
+ 
+             this.tutorLink_2.addEventListener("click", () => {
+             /* XML Object Definition */
+             let xhr = new XMLHttpRequest();
+                 
+             /* ASYNCHRONOUS call to ABOUT page content */
+             xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                 /* ASYNCHRONOUS call to load ABOUT page content */
+                 xhr.onreadystatechange = function(){
+ 
+             if(this.readyState == 4 && this.status == 200) {
+                 document.getElementById("content").innerHTML = this.responseText; 
+                     const contact = document.getElementById("sessReq");
+                     contact.addEventListener("click", () => { loadContent("contact") });
+                 }
+             }
+             /* if ASYNCHRONOUS call fails load error message */
+                     xhr.onerror = function(){
+                 console.log("Data request error...");
+             }
+ 
+             xhr.send(); 
+ 
+             });        
+ 
+             this.tutorLink_3.addEventListener("click", () => {
+                     /* XML Object Definition */
+                 let xhr = new XMLHttpRequest();
+                     
+                 /* ASYNCHRONOUS call to ABOUT page content */
+                 xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                     /* ASYNCHRONOUS call to load ABOUT page content */
+                     xhr.onreadystatechange = function(){
+ 
+                 if(this.readyState == 4 && this.status == 200) {
+                     document.getElementById("content").innerHTML = this.responseText; 
+                         const contact = document.getElementById("sessReq");
+                         contact.addEventListener("click", () => { loadContent("contact") });
+                     }
+                 }
+                 /* if ASYNCHRONOUS call fails load error message */
+                         xhr.onerror = function(){
+                     console.log("Data request error...");
+                 }
+ 
+                 xhr.send(); 
+             });     
+ 
+             this.tutorLink_4.addEventListener("click", () => {
+             /* XML Object Definition */
+             let xhr = new XMLHttpRequest();
+                 
+             /* ASYNCHRONOUS call to ABOUT page content */
+             xhr.open('GET', './assets/regions/content/tutors/larry.html', true);
+                 /* ASYNCHRONOUS call to load ABOUT page content */
+                 xhr.onreadystatechange = function(){
+ 
+             if(this.readyState == 4 && this.status == 200) {
+                 document.getElementById("content").innerHTML = this.responseText; 
+                     const contact = document.getElementById("sessReq");
+                     contact.addEventListener("click", () => { loadContent("contact") });
+                 }
+             }
+             /* if ASYNCHRONOUS call fails load error message */
+                     xhr.onerror = function(){
+                 console.log("Data request error...");
+             }
+ 
+             xhr.send(); 
+             });           
+ 
+ 
+             function loadContent(content)
+             {
+             let xhr = new XMLHttpRequest();
+             
+             /* ASYNCHRONOUS call to ABOUT page content */
+             xhr.open('GET', './assets/regions/content/' + content + '.html', true);
+             /* ASYNCHRONOUS call to load ABOUT page content */
+             xhr.onreadystatechange = function(){
+             if(this.readyState == 4 && this.status == 200) {
+             document.getElementById("content").innerHTML = this.responseText; 
+                 new Form();
+             }
+             }
+             /* if ASYNCHRONOUS call fails load error message */
+                 xhr.onerror = function(){
+             console.log("Data request error...");
+             }
+ 
+             xhr.send(); 
+             }
+ 
+       }  
 
 }
 

@@ -5,7 +5,7 @@
  require './assets/PHPMailer/class.pop3.php';
  require './assets/PHPMailer/class.smtp.php';
  require './assets/PHPMailer/class.phpmaileroauth.php';
-
+ require './assets/classes/User.php';
  
 // use PHPMailer;
 //use PHPMailer\PHPMailer\Exception;
@@ -126,7 +126,8 @@ $mail->SMTPDebug = 0;
 $mail->Debugoutput = 'html';
 
 //Set the hostname of the mail server
-$mail->Host = 'mail.privateemail.com';
+// $mail->Host = 'mail.privateemail.com';
+$mail->Host = User::getHost();
 // use
 // $mail->Host = gethostbyname('smtp.gmail.com');
 // if your network does not support SMTP over IPv6
@@ -141,11 +142,12 @@ $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 
 
-$mail->Username = "admin@athlene.site";
-$mail->Password = "M@y3rZ.@thl3n3!6a";
+//$mail->Username = "admin@athlene.site";
+$mail->Username = User::getEmail();
+$mail->Password = User::getPwd();
 
 //From email address and name
-$mail->From = "admin@athlene.site";
+$mail->From = User::getEmail();
 $mail->FromName = "Athlene Learning - Tutelage Request Message";
 
 //To address and name
