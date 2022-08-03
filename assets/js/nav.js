@@ -1,5 +1,5 @@
 /* Primary site navigation functionality */
-
+// CLASS used to manage useer interaction with the Homepage's links
 /* Primary link navigation OBJECT definition */
 class Nav{
 
@@ -12,18 +12,6 @@ class Nav{
                 this.aboutLinkStatus = document.getElementById("about-link");
                 this.scheduleLinkStatus = document.getElementById("schedule-link");
 
-            /* Define all links found in SUBJECT navigation section */        
-            this.mathLink = document.getElementById("math");
-            this.englishLink = document.getElementById("english");
-            this.physicsLink = document.getElementById("physics");
-            this.itLink = document.getElementById("it");
-
-            /* Define all links found in SUBJECT navigation section */        
-            this.historyLink = document.getElementById("history");
-            this.soc_studLink = document.getElementById("social-studies");
-            this.spanishLink = document.getElementById("spanish");
-            this.frenchLink = document.getElementById("french");
-            
             /* Define all links found in PRIMARY navigation bar */
               /* ########################################## */
             /* HOME link definition */
@@ -35,26 +23,128 @@ class Nav{
               /* SCHEDULE link definition */
               this.scheduleLink = document.getElementById("schedule");
               /* ########################################## */
-
-
-               /* EVENTLISTENERS defined to respond to user interaction */
+    
+                 /* EVENTLISTENERS defined to respond to user interaction */
                // NAVBAR
                this.aboutLink.addEventListener("click", this.clickAboutHandler.bind(this));
                this.contactLink.addEventListener("click", this.clickContactHandler.bind(this));  
                this.scheduleLink.addEventListener("click", this.clickScheduleHandler.bind(this));  
 
-                // TOPICS
-               this.mathLink.addEventListener("click", this.clickMathHandler.bind(this));  
-               this.englishLink.addEventListener("click", this.clickEnglishHandler.bind(this));  
-               this.physicsLink.addEventListener("click", this.clickPhysicsHandler.bind(this));  
-               this.itLink.addEventListener("click", this.clickITHandler.bind(this));  
-           
+
+            /* Define all links found in SUBJECT navigation section */        
+            this.mathLink = document.getElementById("math");
+            this.englishLink = document.getElementById("english");
+            this.physicsLink = document.getElementById("physics");
+            this.itLink = document.getElementById("it");
+            // TOPICS
+            this.mathLink.addEventListener("click", this.clickMathHandler.bind(this));  
+            this.englishLink.addEventListener("click", this.clickEnglishHandler.bind(this));  
+            this.physicsLink.addEventListener("click", this.clickPhysicsHandler.bind(this));  
+            this.itLink.addEventListener("click", this.clickITHandler.bind(this));  
+        
+
+            /* Define all links found in SUBJECT navigation section */        
+            this.historyLink = document.getElementById("history");
+            this.socialstudLink = document.getElementById("social-studies");
+            this.spanishLink = document.getElementById("spanish");
+            this.frenchLink = document.getElementById("french");
+
+            this.historyLink.addEventListener("click", this.clickHistoryHandler.bind(this));
+            this.socialstudLink.addEventListener("click", this.clickSocialStudiesHandler.bind(this));
+            this.spanishLink.addEventListener("click", this.clickSpanishHandler.bind(this));
+            this.frenchLink.addEventListener("click", this.clickFrenchHandler.bind(this));
+            
                /* Copyright YEAR Definition */
                window.addEventListener("load", () => {
                 document.getElementById("year").appendChild(document.createTextNode(new Date().getFullYear()));
                });
        }      
       
+       
+       clickSocialStudiesHandler(){
+        /* XML Object Definition */
+   let xhr = new XMLHttpRequest();
+       
+   /* ASYNCHRONOUS call to ABOUT page content */
+   xhr.open('GET', './assets/regions/content/topics/social-studies.html', true);
+       /* ASYNCHRONOUS call to load ABOUT page content */
+       xhr.onreadystatechange = function(){
+   if(this.readyState == 4 && this.status == 200) {
+       document.getElementById("content").innerHTML = this.responseText; 
+       Tutor.clickMathTutors();
+       }
+   }
+   /* if ASYNCHRONOUS call fails load error message */
+           xhr.onerror = function(){
+       console.log("Data request error...");
+   }
+
+   xhr.send(); 
+        }
+
+       clickSpanishHandler(){
+                 /* XML Object Definition */
+            let xhr = new XMLHttpRequest();
+                
+            /* ASYNCHRONOUS call to ABOUT page content */
+            xhr.open('GET', './assets/regions/content/topics/spanish.html', true);
+                /* ASYNCHRONOUS call to load ABOUT page content */
+                xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200) {
+                document.getElementById("content").innerHTML = this.responseText; 
+                Tutor.clickMathTutors();
+                }
+            }
+            /* if ASYNCHRONOUS call fails load error message */
+                    xhr.onerror = function(){
+                console.log("Data request error...");
+            }
+
+            xhr.send(); 
+       }
+
+       clickFrenchHandler(){
+        /* XML Object Definition */
+        let xhr = new XMLHttpRequest();
+            
+        /* ASYNCHRONOUS call to ABOUT page content */
+        xhr.open('GET', './assets/regions/content/topics/french.html', true);
+            /* ASYNCHRONOUS call to load ABOUT page content */
+            xhr.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText; 
+            Tutor.clickMathTutors();
+            }
+        }
+        /* if ASYNCHRONOUS call fails load error message */
+                xhr.onerror = function(){
+            console.log("Data request error...");
+        }
+
+        xhr.send(); 
+       }
+
+       clickHistoryHandler(){
+        /* XML Object Definition */
+  let xhr = new XMLHttpRequest();
+       
+  /* ASYNCHRONOUS call to ABOUT page content */
+  xhr.open('GET', './assets/regions/content/topics/history.html', true);
+    /* ASYNCHRONOUS call to load ABOUT page content */
+    xhr.onreadystatechange = function(){
+  if(this.readyState == 4 && this.status == 200) {
+       document.getElementById("content").innerHTML = this.responseText; 
+       Tutor.clickMathTutors();
+    }
+  }
+  /* if ASYNCHRONOUS call fails load error message */
+        xhr.onerror = function(){
+      console.log("Data request error...");
+  }
+
+  xhr.send(); 
+
+        } 
 
        clickMathHandler(){
 
@@ -248,6 +338,8 @@ class Nav{
           
        }
        
+
+
 }
    
 
