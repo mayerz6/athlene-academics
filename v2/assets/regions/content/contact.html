@@ -1,0 +1,133 @@
+    <h1>Contact An <span style="color:#EE5552; font-weight: 100;">Expert</span> Tutor</h1>
+    <span><a href="./index.html">Home</a> | Contact</span><span id="return" style="margin-left: 56%"><i class="fa fa-caret-square-o-left" style="color:red"></i>&nbsp<a href="./index.html">Back</a></span>
+    <br>
+    <br>
+    <h6>We take our users very seriously. If you need our help with
+        your account, have any questions or facing some
+        kind of issue, please do not hesitate to contact us.</h6>              
+
+
+<hr>
+
+       <section id="reqForm">
+        <h4><b>Contact Info</b></h4>
+        <p>Please provide us with your specific details below.</p>
+        <div id="contactForm">
+            <div class="form-row">
+                <!-- 1st Column -->
+                <div class="form-group col-md-6">
+                     <label for="nameInput">Name:</label>
+                        <input class="form-control" id="nameInput" type="text" name="name" placeholder="Your preferred name">
+                        <span id="nameErrorMsg"></span>   
+                </div>
+                <!-- 2nd Column -->
+                <div class="form-group col-md-6">
+                        <label for="emailInput">Email:</label>
+                        <input class="form-control" id="emailInput" type="text" name="email" placeholder="Your preferred email">
+                        <span id="emailErrorMsg"></span>
+                </div>               
+            </div>
+            <div class="form-row">
+                 <!-- 3rd Column -->
+                 <div class="form-group col-md-6">
+                        <label for="phoneInput">Contact:</label>
+                        <input class="form-control" id="phoneInput" type="text" name="phone" placeholder="Your preferred contact">
+                        <span id="phoneErrorMsg"></span>    
+                        <br><small>*Enter your mobile number if you wish to communicate via <b>WhatsApp</b> messaging.</small>
+                       
+                </div>
+                 <!-- 4th Column -->
+                <div class="form-group col-md-6">
+                        <label for="usrTopic">Select Subject:</label>
+                            <select class="form-control" name="usrTopic" id="usrTopic">
+                                <option value="0">-- Subject Options --</option>
+                                <option value="1">Mathematics</option>
+                                <option value="2">Physics</option>
+                                <option value="3">English Literature</option>
+                                <option value="4">English Language</option>
+                                <option value="5">History</option>
+                            </select>
+                            <span id="topicErrorMsg"></span>
+                </div>
+            </div>
+
+            <hr>
+            <h4><b>Tutelage Info</b></h4>
+            
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="usrLevel">Select Current Level Of Knowledge:</label>
+                    <select class="form-control" name="usrLevel" id="usrLevel">
+                     <option value="0">-- Skill Level --</option>
+                     <option value="1">Primary</option>
+                     <option value="2">Secondary</option>
+                     <option value="3">Tertiary</option>
+                   </select>
+                   <span id="levelErrorMsg"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="usrSessTime">Select Preferred Time For Sessions:</label>
+                    <select class="form-control" name="usrSessTime" id="usrSessTime">
+                     <option value="0">-- Session Days --</option>
+                     <option value="1">Weekdays</option>
+                     <option value="2">Weekends</option>
+                   </select>
+                   <span id="sessErrorMsg"></span>
+
+                </div>
+            </div>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <h6>Who is this tutelage for?</h6>              
+                    <input class="" type="radio" id="male" checked name="stuDef" value="myself">
+                    <label for="male">Myself</label>
+                    <input class="" type="radio" id="female" name="stuDef" value="mychild">
+                    <label for="female">My child</label>
+                    <input class="" type="radio" id="other" name="stuDef" value="some1else">
+                    <label for="other">Someone else</label>
+                    <span id="sessErrorMsg"></span>
+                    </div>   
+            </div>
+
+        </div>
+          
+    
+           
+     
+<br>
+<h4><b>Feedback Info</b></h4>
+        
+            <div class="form-row">   
+                <div class="form-group col-md-12">
+                    <label for="ckb1">How can we help?</label>
+                   <br><textarea name="feedbackMsg" id="feedbackMsg" placeholder="Example...I'd like help preparing for my CXC Maths exam."></textarea>
+                   <span id="feedbackErrorMsg"></span>
+                    
+                </div>        
+            </div>
+
+            <div class="form-row">   
+                <div class="form-group col-md-12">
+                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="copy-mail">
+                    <label class="label-checkbox100" for="ckb1">
+                        Send copy to my-email
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button type="button" id="btnSubmit" class="btn btn-outline-warning">
+                        Send Email
+                    </button>
+                    <br>
+                    <br>
+                    <span id="emailConfirm"></span>
+                </div>
+            </div>
+     
+        </section>
